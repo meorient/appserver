@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://10.20.0.201:3306/nescue_dev?useSSL=false&serverTimezone = Hongkong
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  application:
+    name: app-server
+server:
+  port: 1010
+
+mybatis:
+  type-aliases-package: com.meorient.appserver.pojo
