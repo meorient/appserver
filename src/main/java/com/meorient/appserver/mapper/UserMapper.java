@@ -27,9 +27,7 @@ public interface UserMapper {
 
     @Select("select companyname,contacts.name,contacts.phone,contacts.homephone,contacts.mobilephone\n" +
             "from customers,contacts\n" +
-            "where customers.customer_id=contacts.company_id  and contacts.__deprecated = 0  and customer_id in (select customer_id\n" +
-            "from customers\n" +
-            "where customers.sales_rep_id=56484  and customers.__deprecated = 0);")
+            "where customers.customer_id=contacts.company_id  and contacts.__deprecated = 0  and customer_id = #{companyid};")
     @Results({
             @Result(property="companyname",column="companyname"),
             @Result(property="contactname",column="name"),
@@ -37,7 +35,7 @@ public interface UserMapper {
             @Result(property="homephone",column="homephone"),
             @Result(property="mobile",column="mobilephone"),
     })
-    List<Contact> selectAllContacts();
+    List<Contact> selectAllContacts(@Param("companyid") String companyid);
 
     /**
      * 得到所有用户

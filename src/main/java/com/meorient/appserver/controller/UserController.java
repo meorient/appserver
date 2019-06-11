@@ -12,6 +12,13 @@ import com.meorient.appserver.mapper.UserMapper;
 import com.meorient.appserver.pojo.CallLog;
 import com.meorient.appserver.pojo.Contact;
 import com.meorient.appserver.pojo.Customer;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author sunwanghe
@@ -53,9 +60,9 @@ public class UserController {
     }
 
     @RequestMapping("/contacts")
-    public String getContacts(){
+    public String getContacts(@RequestParam("companyid") String companyid){
         int code = -1;
-        List<Contact> contactList = userMapper.selectAllContacts();
+        List<Contact> contactList = userMapper.selectAllContacts(companyid);
         if(contactList==null||contactList.size()==0){
             code = -1;
         }else{
@@ -71,7 +78,7 @@ public class UserController {
             object.put("companyname",contact.getCompanyname());
             object.put("contactname",contact.getContactname());
             object.put("phone",contact.getPhone());
-            object.put("homep hone", contact.getHomephone());
+            object.put("homephone", contact.getHomephone());
             object.put("mobile",contact.getMobile());
             contacts.add(object);
         }
