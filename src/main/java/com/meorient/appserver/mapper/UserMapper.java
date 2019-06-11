@@ -2,6 +2,8 @@ package com.meorient.appserver.mapper;
 
 import com.meorient.appserver.pojo.Contact;
 import com.meorient.appserver.pojo.Customer;
+import com.meorient.appserver.pojo.User;
+
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -37,5 +39,10 @@ public interface UserMapper {
     })
     List<Contact> selectAllContacts();
 
-
+    /**
+     * 得到所有用户
+     * @return
+     */
+    @Select("select email from employees")
+    List<User> selectUsers();
 }

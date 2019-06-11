@@ -1,17 +1,17 @@
 package com.meorient.appserver.controller;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.meorient.appserver.mapper.UserMapper;
-import com.meorient.appserver.pojo.Contact;
-import com.meorient.appserver.pojo.Customer;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.meorient.appserver.mapper.UserMapper;
+import com.meorient.appserver.pojo.CallLog;
+import com.meorient.appserver.pojo.Contact;
+import com.meorient.appserver.pojo.Customer;
 
 /**
  * @author sunwanghe
@@ -21,9 +21,9 @@ import java.util.List;
 @RestController
 public class UserController {
 
-
     @Autowired
     private UserMapper userMapper;
+    
 
     @RequestMapping("/customers")
     public String getCustomers(){
@@ -81,5 +81,4 @@ public class UserController {
         jsonObject.put("data",data);
         return jsonObject.toString();
     }
-
 }
